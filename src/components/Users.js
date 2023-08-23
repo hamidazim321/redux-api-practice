@@ -9,7 +9,7 @@ const Users = () => {
   const error = useSelector(store => store.users.error)
 
   useEffect(()=> {
-    dispatch(fetchUsers)
+    dispatch(fetchUsers())
   },[dispatch])
 
   return (
@@ -17,10 +17,11 @@ const Users = () => {
       {isLoading && 'LOADING'}
       {error && 'ERROR'}
       {users.map(user => {
-        <div>
+        return (<div>
           <p>{user.name.first}</p>
           <p>{user.name.last}</p>
         </div>
+        )
       })}
     </div>
   )
